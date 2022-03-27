@@ -49,11 +49,8 @@ namespace ShoppingStoreApiExam.V1.Controllers.Customers.Service
             {
                 var currentCustomer = _customerRepository.Get(customerId);
                 _customerRepository.Delete(currentCustomer);
-                if (_unitOfWork.SaveChanges() > 0)
-                {
-                    return true;
-                }
-                return false;
+                _unitOfWork.SaveChanges();
+                return true;
             }
             catch (Exception)
             {
@@ -74,7 +71,7 @@ namespace ShoppingStoreApiExam.V1.Controllers.Customers.Service
             }
         }
 
-        public CustomerResponse GetBuyById(int customerId)
+        public CustomerResponse GetCustomerById(int customerId)
         {
             try
             {

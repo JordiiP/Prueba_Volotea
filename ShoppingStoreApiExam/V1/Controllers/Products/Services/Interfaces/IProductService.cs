@@ -13,7 +13,7 @@ namespace ShoppingStoreApiExam.V1.Controllers.Products.Services.Interfaces
 
         IEnumerable<ProductResponse> GetAll();
 
-        ProductResponse GetBuyById(int productRequest);
+        ProductResponse GetProductById(int productRequest);
 
         bool Remove(int buyId);
     }

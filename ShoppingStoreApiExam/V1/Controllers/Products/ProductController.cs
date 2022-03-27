@@ -41,7 +41,7 @@ namespace ShoppingStoreApiExam.V1.Controllers.Products
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<ProductResponse> GetCustomer(int productId)
         {
-            var result = _productService.GetBuyById(productId);
+            var result = _productService.GetProductById(productId);
             return new ObjectResult(result) { StatusCode = StatusCodes.Status200OK };
         }
 

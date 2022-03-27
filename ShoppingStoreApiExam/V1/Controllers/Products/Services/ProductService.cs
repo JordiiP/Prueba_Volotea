@@ -48,11 +48,8 @@ namespace ShoppingStoreApiExam.V1.Controllers.Products.Services
             {
                 var currentProduct = _productRepository.Get(productId);
                 _productRepository.Delete(currentProduct);
-                if (_unitOfWork.SaveChanges() > 0)
-                {
-                    return true;
-                }
-                return false;
+                _unitOfWork.SaveChanges();
+                return true;
             }
             catch (Exception)
             {
@@ -64,8 +61,8 @@ namespace ShoppingStoreApiExam.V1.Controllers.Products.Services
         {
             try
             {
-                return from buy in _productRepository.GetAll()
-                       select new ProductResponse(buy);
+                return from product in _productRepository.GetAll()
+                       select new ProductResponse(product);
             }
             catch (Exception)
             {
@@ -73,12 +70,12 @@ namespace ShoppingStoreApiExam.V1.Controllers.Products.Services
             }
         }
 
-        public ProductResponse GetBuyById(int buyId)
+        public ProductResponse GetProductById(int productId)
         {
             try
             {
-                var currentBuy = _productRepository.Get(buyId);
-                return new ProductResponse(currentBuy);
+                var currentProduct = _productRepository.Get(productId);
+                return new ProductResponse(currentProduct);
             }
             catch (Exception)
             {

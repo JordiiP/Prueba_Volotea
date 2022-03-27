@@ -13,7 +13,7 @@ namespace ShoppingStoreApiExam.V1.Controllers.Customers.Service.Interfaces
 
         IEnumerable<CustomerResponse> GetAll();
 
-        CustomerResponse GetBuyById(int customerId);
+        CustomerResponse GetCustomerById(int customerId);
 
         bool Remove(int customerId);
     }

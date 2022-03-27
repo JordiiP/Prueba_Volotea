@@ -48,11 +48,9 @@ namespace ShoppingStoreApiExam.V1.Controllers.Buys.Services
             {
                 var currentBuy = _buyRepository.Get(buyId);
                 _buyRepository.Delete(currentBuy);
-                if (_unitOfWork.SaveChanges() > 0)
-                {
-                    return true;
-                }
-                return false;
+                var unitOfWorkResponse = _unitOfWork.SaveChanges();
+                _unitOfWork.SaveChanges();
+                return true;
             }
             catch (Exception)
             {
